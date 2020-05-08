@@ -1,80 +1,90 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import {
-  GithubOutlined,
-  TwitterOutlined,
-  LinkedinOutlined,
-  MailOutlined
-} from '@ant-design/icons';
+import { GithubOutlined } from '@ant-design/icons';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 import './styles.css';
+import ProjectCard from './components/ProjectCard';
+import Header from './components/Header';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    backgroundColor: '#0f0fff07'
+  }
+}));
 
 function App() {
   const props = useSpring({
     padding: 20,
-    boxShadow: '0px 10px 20px 0px rgba(0,0,0,0.4)',
-    borderBottom: '10px solid #2D3747',
+    boxShadow: '0px 10px 20px -5px rgba(0,0,0,0.4)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     opacity: 1,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
+    backgroundColor: '#fff'
   });
 
-  const workSection = useSpring({
-    padding: 20,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    opacity: 1,
-    from: { opacity: 0 }
-  });
+  const classes = useStyles();
 
   return (
-    <div>
-      <animated.div style={props}>
-        <h1>Steven Woodward</h1>
-        <h3>Front-end Web Developer</h3>
-        <div>
-          <GithubOutlined style={{ fontSize: '2rem', margin: '20px' }} />
-          <TwitterOutlined style={{ fontSize: '2rem', margin: '20px' }} />
-          <LinkedinOutlined style={{ fontSize: '2rem', margin: '20px' }} />
-          <MailOutlined style={{ fontSize: '2rem', margin: '20px' }} />
-        </div>
-      </animated.div>
-      <h1 style={{ textAlign: 'center', marginTop: '100px' }}>My Projects</h1>
-      <animated.div style={workSection}>
-        <Card />
-        <Card />
-      </animated.div>
-      <animated.div style={workSection}>
-        <Card />
-        <Card />
-      </animated.div>
-    </div>
-  );
-}
-
-const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 200,
-  (x - window.innerWidth / 2) / 200,
-  1.1
-];
-const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
-
-function Card() {
-  const [props, set] = useSpring(() => ({
-    xys: [0, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 }
-  }));
-  return (
-    <animated.div
-      class='card'
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: props.xys.interpolate(trans) }}
-    />
+    <Container maxWidth='md' className={classes.root}>
+      <Grid container spacing={3}>
+        <Header />
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <animated.div style={props}>
+              <ProjectCard />
+            </animated.div>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 

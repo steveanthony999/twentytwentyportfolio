@@ -1,15 +1,18 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import { GithubOutlined } from '@ant-design/icons';
+// import { GithubOutlined } from '@ant-design/icons';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
-import './styles.css';
 import ProjectCard from './components/ProjectCard';
 import Header from './components/Header';
+
+import PhrazarGif from './images/phrazarGif.gif';
+import PhrazarCardBg from './images/phrazar_card_bg.jpg';
+import './styles.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,7 +47,17 @@ function App() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <animated.div style={props}>
-              <ProjectCard />
+              <ProjectCard
+                cardBackgroundImage={PhrazarCardBg}
+                projectTitle='Phrazar'
+                projectDescription='Translation app for use as a sidekick to major leanguage-learning programs by providing movie-quotes that are fetched, translated, transliterated, and web-speech-enabled.'
+                technologyOne='React'
+                technologyTwo='Material-UI'
+                technologyThree='Yandex API | Azure API | Andruxnet API'
+                technologyFour='Mozilla Web Speech API'
+                projectWebsite='https://github.com/steveanthony999/phrazar'
+                projectGif={PhrazarGif}
+              />
             </animated.div>
           </Paper>
         </Grid>
@@ -79,7 +92,24 @@ function App() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <animated.div style={props}>
-              <ProjectCard />
+              {/* <div
+                style={{
+                  width: '100%',
+                  height: '0',
+                  paddingBottom: '107%',
+                  position: 'relative'
+                }}
+              >
+                <iframe
+                  src='https://giphy.com/embed/gL8dyxrcKda3fJ3uRP'
+                  width='100%'
+                  height='100%'
+                  style={{ position: 'absolute' }}
+                  frameBorder='0'
+                  class='giphy-embed'
+                  allowFullScreen
+                ></iframe>
+              </div> */}
             </animated.div>
           </Paper>
         </Grid>

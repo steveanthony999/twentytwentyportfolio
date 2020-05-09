@@ -1,53 +1,174 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
-import Image from '../testImage.jpeg';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import { GithubOutlined } from '@ant-design/icons';
+import WebIcon from '@material-ui/icons/Web';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   cardRoot: {
     maxWidth: '100%'
+  },
+  root: {
+    flexGrow: 1
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3)
   }
 }));
 
 const ProjectCard = props => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Card className={classes.cardRoot}>
-        <CardActionArea style={{ zIndex: '0' }}>
-          <CardMedia
-            component='img'
-            alt='Contemplative Reptile'
-            height='240'
-            image={Image}
-            title='Contemplative Reptile'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              Lizard
-            </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size='small' color='primary'>
-            Share
+        {/* <CardActionArea style={{ zIndex: '0' }}> */}
+        <CardMedia
+          component='img'
+          alt='Contemplative Reptile'
+          height='240'
+          image={props.cardBackgroundImage}
+          title='Contemplative Reptile'
+        />
+        <CardContent>
+          <Typography gutterBottom variant='h5' component='h2'>
+            {props.projectTitle}
+          </Typography>
+          <Typography variant='body2' color='textSecondary' component='p'>
+            {props.projectDescription}
+          </Typography>
+        </CardContent>
+        <Divider />
+        {/* Technologies */}
+        <List>
+          <ListItem>
+            <ListItemText primary='Tech Used:' />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={props.technologyOne} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={props.technologyTwo} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={props.technologyThree} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary={props.technologyFour} />
+          </ListItem>
+          <Divider />
+        </List>
+        {/* </CardActionArea> */}
+        <CardActions
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <Button
+            size='large'
+            variant='outlined'
+            color='primary'
+            href={props.projectWebsite}
+            target='_blank'
+          >
+            <GithubOutlined style={{ fontSize: '2rem' }} />
+            &nbsp;CODE
           </Button>
-          <Button size='small' color='primary'>
-            Learn More
+
+          <Button
+            size='large'
+            variant='outlined'
+            color='primary'
+            href={props.projectWebsite}
+            target='_blank'
+          >
+            <LiveTvIcon style={{ fontSize: '2rem' }} />
+            &nbsp;LIVE
+          </Button>
+
+          <Button
+            size='large'
+            variant='outlined'
+            color='primary'
+            onClick={handleOpen}
+          >
+            <WebIcon style={{ fontSize: '2rem' }} />
+            &nbsp;DEMO
           </Button>
         </CardActions>
       </Card>
+      <Modal
+        aria-labelledby='transition-modal-title'
+        aria-describedby='transition-modal-description'
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500
+        }}
+      >
+        <Fade in={open}>
+          <Grid container justify='center' onClick={handleClose}>
+            <img src={props.projectGif} style={{ height: '600px' }} />
+            <div
+              style={{
+                width: '300px',
+                marginLeft: '20px',
+                background: 'rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-evenly'
+              }}
+            >
+              <Button size='large' variant='contained' color='primary'>
+                <GithubOutlined style={{ fontSize: '2rem' }} />
+                &nbsp;&nbsp;CODE
+              </Button>
+              <Button size='large' variant='contained' color='primary'>
+                <LiveTvIcon style={{ fontSize: '2rem' }} />
+                &nbsp;&nbsp;LIVE
+              </Button>
+            </div>
+          </Grid>
+        </Fade>
+      </Modal>
     </div>
   );
 };

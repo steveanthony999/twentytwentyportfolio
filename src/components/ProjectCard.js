@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
   }
@@ -145,27 +144,47 @@ const ProjectCard = props => {
         }}
       >
         <Fade in={open}>
-          <Grid container justify='center' onClick={handleClose}>
+          <Grid container justify='center' onClick={handleClose} spacing={5}>
             <img src={props.projectGif} style={{ height: '600px' }} />
-            <div
-              style={{
-                width: '300px',
-                marginLeft: '20px',
-                background: 'rgba(0,0,0,0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-evenly'
-              }}
-            >
-              <Button size='large' variant='contained' color='primary'>
-                <GithubOutlined style={{ fontSize: '2rem' }} />
-                &nbsp;&nbsp;CODE
-              </Button>
-              <Button size='large' variant='contained' color='primary'>
-                <LiveTvIcon style={{ fontSize: '2rem' }} />
-                &nbsp;&nbsp;LIVE
-              </Button>
-            </div>
+            <Grid item style={{ width: '600px' }}>
+              <Paper className={classes.paper}>
+                <div>
+                  <Typography
+                    variant='h1'
+                    gutterBottom
+                    align='center'
+                    color='textPrimary'
+                  >
+                    {props.projectTitle}
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    gutterBottom
+                    align='center'
+                    color='textPrimary'
+                  >
+                    {props.projectDescription}
+                  </Typography>
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-evenly',
+                    marginTop: '60px'
+                  }}
+                >
+                  <Button size='large' variant='contained' color='primary'>
+                    <GithubOutlined style={{ fontSize: '2rem' }} />
+                    &nbsp;&nbsp;CODE
+                  </Button>
+                  <Button size='large' variant='contained' color='primary'>
+                    <LiveTvIcon style={{ fontSize: '2rem' }} />
+                    &nbsp;&nbsp;LIVE
+                  </Button>
+                </div>
+              </Paper>
+            </Grid>
           </Grid>
         </Fade>
       </Modal>

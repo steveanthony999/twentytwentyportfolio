@@ -59,6 +59,7 @@ function App() {
                 technologyThree='Yandex API | Azure API | Andruxnet API'
                 technologyFour='Mozilla Web Speech API'
                 projectRepo='https://github.com/steveanthony999/phrazar'
+                projectWebsite='https://stupefied-kowalevski-b309bb.netlify.app/'
                 projectGif={PhrazarGif}
               />
             </animated.div>

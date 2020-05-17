@@ -57,7 +57,7 @@ const ProjectCard = props => {
         {/* <CardActionArea style={{ zIndex: '0' }}> */}
         <CardMedia
           component='img'
-          alt='Contemplative Reptile'
+          alt='Card Header Image'
           height='240'
           image={props.cardBackgroundImage}
           title='Contemplative Reptile'
@@ -102,7 +102,7 @@ const ProjectCard = props => {
             size='large'
             variant='outlined'
             color='primary'
-            href={props.projectWebsite}
+            href={props.projectRepo}
             target='_blank'
           >
             <GithubOutlined style={{ fontSize: '2rem' }} />
@@ -145,7 +145,7 @@ const ProjectCard = props => {
       >
         <Fade in={open}>
           <Grid container justify='center' onClick={handleClose} spacing={5}>
-            <img src={props.projectGif} style={{ height: '600px' }} />
+            <img src={props.projectGif} style={{ height: '600px' }} alt='gif' />
             <Grid item style={{ width: '600px' }}>
               <Paper className={classes.paper}>
                 <div>

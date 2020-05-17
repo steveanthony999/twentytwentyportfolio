@@ -12,6 +12,8 @@ import Header from './components/Header';
 
 import PhrazarGif from './images/phrazarGif.gif';
 import PhrazarCardBg from './images/phrazar_card_bg.jpg';
+import WeatherCardBg from './images/weather_card_bg.jpg';
+import WeatherMockup from './images/weatherMockup.jpg';
 import './styles.css';
 
 const useStyles = makeStyles(theme => ({
@@ -44,72 +46,40 @@ function App() {
     <Container maxWidth='md' className={classes.root}>
       <Grid container spacing={3}>
         <Header />
+        {/* Phrazar */}
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <animated.div style={props}>
               <ProjectCard
                 cardBackgroundImage={PhrazarCardBg}
                 projectTitle='Phrazar'
-                projectDescription='Translation app for use as a sidekick to major leanguage-learning programs by providing movie-quotes that are fetched, translated, transliterated, and web-speech-enabled.'
+                projectDescription='Translation web app for use as a sidekick to major leanguage-learning programs by providing movie-quotes that are fetched, translated, transliterated, and web-speech-enabled.'
                 technologyOne='React'
                 technologyTwo='Material-UI'
                 technologyThree='Yandex API | Azure API | Andruxnet API'
                 technologyFour='Mozilla Web Speech API'
-                projectWebsite='https://github.com/steveanthony999/phrazar'
+                projectRepo='https://github.com/steveanthony999/phrazar'
                 projectGif={PhrazarGif}
               />
             </animated.div>
           </Paper>
         </Grid>
+        {/* The Weather */}
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <animated.div style={props}>
-              <ProjectCard />
-            </animated.div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <animated.div style={props}>
-              <ProjectCard />
-            </animated.div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <animated.div style={props}>
-              <ProjectCard />
-            </animated.div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <animated.div style={props}>
-              <ProjectCard />
-            </animated.div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <animated.div style={props}>
-              {/* <div
-                style={{
-                  width: '100%',
-                  height: '0',
-                  paddingBottom: '107%',
-                  position: 'relative'
-                }}
-              >
-                <iframe
-                  src='https://giphy.com/embed/gL8dyxrcKda3fJ3uRP'
-                  width='100%'
-                  height='100%'
-                  style={{ position: 'absolute' }}
-                  frameBorder='0'
-                  class='giphy-embed'
-                  allowFullScreen
-                ></iframe>
-              </div> */}
+              <ProjectCard
+                cardBackgroundImage={WeatherCardBg}
+                projectTitle='Weather'
+                projectDescription='Vanilla JavaScript web app with a blocky UI that uses permitted geolocation to serve you the weather in your preferred metrics along with a bonus inspirational quote.'
+                technologyOne='HTML5 | CSS3 | JavaScript'
+                technologyTwo='Node Js | Express Js'
+                technologyThree='OpenWeather API | Mapquest API'
+                technologyFour='Mozilla Geolocation API'
+                projectRepo='https://github.com/steveanthony999/weatherfy'
+                projectWebsite='https://theweatherbysteve.herokuapp.com/'
+                projectGif={WeatherMockup}
+              />
             </animated.div>
           </Paper>
         </Grid>

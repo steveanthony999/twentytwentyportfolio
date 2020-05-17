@@ -11,6 +11,8 @@ import {
   MailOutlined
 } from '@ant-design/icons';
 
+import { Typography } from '@material-ui/core';
+
 import { Affix } from 'antd';
 
 import { useSpring, animated } from 'react-spring';
@@ -33,6 +35,10 @@ const Header = () => {
       textAlign: 'center',
       color: theme.palette.text.secondary,
       backgroundColor: '#0f0fff07'
+    },
+    heading: {
+      color: theme.palette.text.secondary,
+      marginTop: '20px'
     }
   }));
 
@@ -54,6 +60,13 @@ const Header = () => {
           </animated.div>
         </Affix>
       </Paper>
+      <Typography
+        variant='subtitle1'
+        align='center'
+        className={classes.heading}
+      >
+        PROJECTS
+      </Typography>
     </Grid>
   );
 };

@@ -174,11 +174,23 @@ const ProjectCard = props => {
                     marginTop: '60px'
                   }}
                 >
-                  <Button size='large' variant='contained' color='primary'>
+                  <Button
+                    size='large'
+                    variant='contained'
+                    color='primary'
+                    href={props.projectRepo}
+                    target='_blank'
+                  >
                     <GithubOutlined style={{ fontSize: '2rem' }} />
                     &nbsp;&nbsp;CODE
                   </Button>
-                  <Button size='large' variant='contained' color='primary'>
+                  <Button
+                    size='large'
+                    variant='contained'
+                    color='primary'
+                    href={props.projectWebsite}
+                    target='_blank'
+                  >
                     <LiveTvIcon style={{ fontSize: '2rem' }} />
                     &nbsp;&nbsp;LIVE
                   </Button>

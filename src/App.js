@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import ProjectCard from './components/ProjectCard';
 import Header from './components/Header';
 import About from './components/About';
+import Contact from './components/Contact';
 
 import PhrazarGif from './images/phrazarGif.gif';
 import PhrazarCardBg from './images/phrazar_card_bg.jpg';
@@ -86,6 +87,7 @@ function App() {
             </animated.div>
           </Paper>
         </Grid>
+        <Contact />
       </Grid>
     </Container>
   );

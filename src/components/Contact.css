@@ -1,0 +1,4 @@
+.mailform {
+  display: flex;
+  flex-direction: column;
+}

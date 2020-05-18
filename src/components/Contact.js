@@ -11,6 +11,8 @@ import {
   MailOutlined
 } from '@ant-design/icons';
 
+import ReactContactForm from 'react-mail-form';
+
 import { Typography } from '@material-ui/core';
 
 import { Affix } from 'antd';
@@ -19,7 +21,9 @@ import { useSpring, animated } from 'react-spring';
 
 import TextLoop from 'react-text-loop';
 
-const Header = () => {
+import './Contact.css';
+
+const Contact = () => {
   const props = useSpring({
     padding: 20,
     boxShadow: '0px 10px 20px -5px rgba(0,0,0,0.4)',
@@ -52,18 +56,12 @@ const Header = () => {
       <Paper className={classes.paper}>
         <Affix offsetTop={-220}>
           <animated.div style={props}>
-            <h1>Steven Woodward</h1>
-            <h3>Front-end Web Developer &</h3>
-            <TextLoop
-              springConfig={{ stiffness: 180, damping: 12 }}
-              mask={true}
-            >
-              <h3>Life-long Learner</h3>
-              <h3>Oil Painter</h3>
-              <h3>Bookworm</h3>
-              <h3>Photographer</h3>
-              <h3>Designer</h3>
-            </TextLoop>
+            <h1>GET IN TOUCH</h1>
+            <h3>I'd love to hear from you!</h3>
+            <ReactContactForm
+              to='steveanthony999@gmail.com'
+              className='mailform'
+            />
             <div style={{ marginTop: '20px' }}>
               <GithubOutlined style={{ fontSize: '2rem', margin: '10px' }} />
               <TwitterOutlined style={{ fontSize: '2rem', margin: '10px' }} />
@@ -73,11 +71,8 @@ const Header = () => {
           </animated.div>
         </Affix>
       </Paper>
-      <Typography variant='h3' align='center' className={classes.heading}>
-        ABOUT
-      </Typography>
     </Grid>
   );
 };
 
-export default Header;
+export default Contact;

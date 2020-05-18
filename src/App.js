@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 
 import ProjectCard from './components/ProjectCard';
 import Header from './components/Header';
+import About from './components/About';
 
 import PhrazarGif from './images/phrazarGif.gif';
 import PhrazarCardBg from './images/phrazar_card_bg.jpg';
@@ -46,6 +47,7 @@ function App() {
     <Container maxWidth='md' className={classes.root}>
       <Grid container spacing={3}>
         <Header />
+        <About />
         {/* Phrazar */}
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>

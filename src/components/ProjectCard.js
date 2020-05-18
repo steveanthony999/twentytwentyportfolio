@@ -54,7 +54,6 @@ const ProjectCard = props => {
   return (
     <div>
       <Card className={classes.cardRoot}>
-        {/* <CardActionArea style={{ zIndex: '0' }}> */}
         <CardMedia
           component='img'
           alt='Card Header Image'

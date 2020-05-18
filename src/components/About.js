@@ -17,9 +17,7 @@ import { Affix } from 'antd';
 
 import { useSpring, animated } from 'react-spring';
 
-import TextLoop from 'react-text-loop';
-
-const Header = () => {
+const About = () => {
   const props = useSpring({
     padding: 20,
     boxShadow: '0px 10px 20px -5px rgba(0,0,0,0.4)',
@@ -53,16 +51,6 @@ const Header = () => {
           <animated.div style={props}>
             <h1>Steven Woodward</h1>
             <h3>Front-end Web Developer &</h3>
-            <TextLoop
-              springConfig={{ stiffness: 180, damping: 12 }}
-              mask={true}
-            >
-              <h3>Life-long Learner</h3>
-              <h3>Oil Painter</h3>
-              <h3>Bookworm</h3>
-              <h3>Photographer</h3>
-              <h3>Designer</h3>
-            </TextLoop>
             <div style={{ marginTop: '20px' }}>
               <GithubOutlined style={{ fontSize: '2rem', margin: '10px' }} />
               <TwitterOutlined style={{ fontSize: '2rem', margin: '10px' }} />
@@ -77,10 +65,10 @@ const Header = () => {
         align='center'
         className={classes.heading}
       >
-        ABOUT
+        PROJECTS
       </Typography>
     </Grid>
   );
 };
 
-export default Header;
+export default About;

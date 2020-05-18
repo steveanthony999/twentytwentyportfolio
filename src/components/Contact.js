@@ -14,11 +14,12 @@ import {
 
 import { Typography } from '@material-ui/core';
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 import { Affix } from 'antd';
 
 import { useSpring, animated } from 'react-spring';
-
-import TextLoop from 'react-text-loop';
 
 import './Contact.css';
 
@@ -107,19 +108,29 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} action='/thank-you/'>
               <p>
-                <label>
-                  Your Name:{' '}
-                  <input
+                {/* <label> */}
+                {/* Your Name:{' '} */}
+                {/* <input
                     type='text'
                     name='name'
                     value={name}
                     onChange={handleChange}
-                  />
-                </label>
+                  /> */}
+                {/* </label> */}
+                <TextField
+                  id='outlined-basic'
+                  label='Your Name'
+                  variant='outlined'
+                  type='text'
+                  name='name'
+                  value={name}
+                  onChange={handleChange}
+                  fullWidth
+                />
               </p>
 
               <p>
-                <label>
+                {/* <label>
                   Your Email:{' '}
                   <input
                     type='email'
@@ -127,21 +138,43 @@ const Contact = () => {
                     value={email}
                     onChange={handleChange}
                   />
-                </label>
+                </label> */}
+                <TextField
+                  id='outlined-basic'
+                  label='Your Email'
+                  variant='outlined'
+                  type='email'
+                  name='email'
+                  value={name}
+                  onChange={handleChange}
+                  fullWidth
+                />
               </p>
 
               <p>
-                <label>
+                {/* <label>
                   Message:{' '}
                   <textarea
                     name='message'
                     value={message}
                     onChange={handleChange}
                   />
-                </label>
+                </label> */}
+                <TextField
+                  id='outlined-multiline-static'
+                  label='Your Message'
+                  multiline
+                  rows={4}
+                  defaultValue='Default Value'
+                  variant='outlined'
+                  name='message'
+                  value={message}
+                  onChange={handleChange}
+                  fullWidth
+                />
               </p>
 
-              <div {...getRootProps()}>
+              <div {...getRootProps()} style={{ display: 'none' }}>
                 <input {...getInputProps()} />
                 {isDragActive ? (
                   <p>Drop the files here ...</p>
@@ -151,7 +184,16 @@ const Contact = () => {
               </div>
 
               <p>
-                <button type='submit'>Send</button>
+                {/* <button type='submit'>Send</button> */}
+                <Button
+                  type='submit'
+                  variant='outlined'
+                  size='large'
+                  color='primary'
+                  fullWidth
+                >
+                  SEND
+                </Button>
               </p>
             </form>
             <h3>{status}</h3>

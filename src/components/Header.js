@@ -11,7 +11,7 @@ import {
   MailOutlined
 } from '@ant-design/icons';
 
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
 import { Affix } from 'antd';
 
@@ -42,6 +42,11 @@ const Header = () => {
       color: theme.palette.text.secondary,
       marginTop: '20px',
       fontWeight: '100'
+    },
+    paperTwo: {
+      marginTop: theme.spacing(-2),
+      padding: theme.spacing(2),
+      color: theme.palette.text.secondary
     }
   }));
 
@@ -65,10 +70,35 @@ const Header = () => {
               <h3>Designer</h3>
             </TextLoop>
             <div style={{ marginTop: '20px' }}>
-              <GithubOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <TwitterOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <LinkedinOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <MailOutlined style={{ fontSize: '2rem', margin: '10px' }} />
+              <Button
+                href='https://www.github.com/steveanthony999'
+                target='_blank'
+                className={classes.paperTwo}
+              >
+                <GithubOutlined style={{ fontSize: '2rem', margin: '10px' }} />
+              </Button>
+
+              <Button
+                href='https://www.twitter.com/stevedotvegas'
+                target='_blank'
+                className={classes.paperTwo}
+              >
+                <TwitterOutlined style={{ fontSize: '2rem', margin: '10px' }} />
+              </Button>
+
+              <Button
+                href='https://www.linkedin.com/in/steven-woodward-7a422713b/'
+                target='_blank'
+                className={classes.paperTwo}
+              >
+                <LinkedinOutlined
+                  style={{ fontSize: '2rem', margin: '10px' }}
+                />
+              </Button>
+
+              <Button href='#contact' className={classes.paperTwo}>
+                <MailOutlined style={{ fontSize: '2rem', margin: '10px' }} />
+              </Button>
             </div>
           </animated.div>
         </Affix>

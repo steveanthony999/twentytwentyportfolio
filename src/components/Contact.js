@@ -12,8 +12,6 @@ import {
   MailOutlined
 } from '@ant-design/icons';
 
-import { Typography } from '@material-ui/core';
-
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -21,7 +19,7 @@ import { Affix } from 'antd';
 
 import { useSpring, animated } from 'react-spring';
 
-import './Contact.css';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -58,6 +56,11 @@ const Contact = () => {
       color: theme.palette.text.secondary,
       marginTop: '20px',
       fontWeight: '100'
+    },
+    paperTwo: {
+      marginTop: theme.spacing(-2),
+      padding: theme.spacing(2),
+      color: theme.palette.text.secondary
     }
   }));
 
@@ -76,7 +79,6 @@ const Contact = () => {
 
     fetch('/', {
       method: 'POST',
-      //   headers: { 'Content-Type': 'multipart/form-data; boundary=random' },
       body: encode(data)
     })
       .then(() => setStatus('Form Submission Successful!!'))
@@ -104,90 +106,126 @@ const Contact = () => {
 
   return (
     <Grid item xs={12} style={{ zIndex: '10' }}>
-      <Paper className={classes.paper}>
-        <Affix offsetTop={-220}>
-          <animated.div style={props}>
-            <h1>GET IN TOUCH</h1>
-            <h3>I'd love to hear from you!</h3>
+      <ScrollableAnchor id={'contact'}>
+        <Paper className={classes.paper}>
+          <Affix offsetTop={-220}>
+            <animated.div style={props}>
+              <h1>GET IN TOUCH</h1>
+              <h3>I'd love to hear from you!</h3>
 
-            <form
-              onSubmit={handleSubmit}
-              action='/thank-you/'
-              style={{ width: '100%' }}
-            >
-              <p>
-                <TextField
-                  id='outlined-basic'
-                  label='Your Name'
-                  variant='outlined'
-                  type='text'
-                  name='name'
-                  value={name}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </p>
+              <form
+                onSubmit={handleSubmit}
+                action='/thank-you/'
+                style={{ width: '100%' }}
+              >
+                <p>
+                  <TextField
+                    id='outlined-basic'
+                    label='Your Name'
+                    variant='outlined'
+                    type='text'
+                    name='name'
+                    value={name}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </p>
 
-              <p>
-                <TextField
-                  id='outlined-basic'
-                  label='Your Email'
-                  variant='outlined'
-                  type='email'
-                  name='email'
-                  value={email}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </p>
+                <p>
+                  <TextField
+                    id='outlined-basic'
+                    label='Your Email'
+                    variant='outlined'
+                    type='email'
+                    name='email'
+                    value={email}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </p>
 
-              <p>
-                <TextField
-                  id='outlined-multiline-static'
-                  label='Your Message'
-                  multiline
-                  rows={4}
-                  defaultValue='Default Value'
-                  variant='outlined'
-                  name='message'
-                  value={message}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </p>
+                <p>
+                  <TextField
+                    id='outlined-multiline-static'
+                    label='Your Message'
+                    multiline
+                    rows={4}
+                    defaultValue='Default Value'
+                    variant='outlined'
+                    name='message'
+                    value={message}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                </p>
 
-              <div {...getRootProps()} style={{ display: 'none' }}>
-                <input {...getInputProps()} />
-                {isDragActive ? (
-                  <p>Drop the files here ...</p>
-                ) : (
-                  <p>Drag 'n' drop some files here, or click to select files</p>
-                )}
-              </div>
+                <div {...getRootProps()} style={{ display: 'none' }}>
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p>Drop the files here ...</p>
+                  ) : (
+                    <p>
+                      Drag 'n' drop some files here, or click to select files
+                    </p>
+                  )}
+                </div>
 
-              <p>
+                <p>
+                  <Button
+                    type='submit'
+                    variant='outlined'
+                    size='large'
+                    color='primary'
+                    fullWidth
+                  >
+                    SEND
+                  </Button>
+                </p>
+              </form>
+              <h3>{status}</h3>
+
+              <div style={{ marginTop: '20px' }}>
                 <Button
-                  type='submit'
-                  variant='outlined'
-                  size='large'
-                  color='primary'
-                  fullWidth
+                  href='https://www.github.com/steveanthony999'
+                  target='_blank'
+                  className={classes.paperTwo}
                 >
-                  SEND
+                  <GithubOutlined
+                    style={{ fontSize: '2rem', margin: '10px' }}
+                  />
                 </Button>
-              </p>
-            </form>
-            <h3>{status}</h3>
 
-            <div style={{ marginTop: '20px' }}>
-              <GithubOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <TwitterOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <LinkedinOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-              <MailOutlined style={{ fontSize: '2rem', margin: '10px' }} />
-            </div>
-          </animated.div>
-        </Affix>
-      </Paper>
+                <Button
+                  href='https://www.twitter.com/stevedotvegas'
+                  target='_blank'
+                  className={classes.paperTwo}
+                >
+                  <TwitterOutlined
+                    style={{ fontSize: '2rem', margin: '10px' }}
+                  />
+                </Button>
+
+                <Button
+                  href='https://www.linkedin.com/in/steven-woodward-7a422713b/'
+                  target='_blank'
+                  className={classes.paperTwo}
+                >
+                  <LinkedinOutlined
+                    style={{ fontSize: '2rem', margin: '10px' }}
+                  />
+                </Button>
+
+                <Button
+                  href='mailto:steveanthony999@gmail.com?subject=Hello Steve'
+                  className={classes.paperTwo}
+                >
+                  <MailOutlined style={{ fontSize: '2rem', margin: '10px' }} />
+                </Button>
+              </div>
+            </animated.div>
+          </Affix>
+        </Paper>
+      </ScrollableAnchor>
     </Grid>
   );
 };

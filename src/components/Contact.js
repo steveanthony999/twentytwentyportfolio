@@ -82,6 +82,10 @@ const Contact = () => {
       .then(() => setStatus('Form Submission Successful!!'))
       .catch(error => setStatus('Form Submission Failed!'));
 
+    setName('');
+    setMessage('');
+    setEmail('');
+
     e.preventDefault();
   };
 
@@ -106,17 +110,12 @@ const Contact = () => {
             <h1>GET IN TOUCH</h1>
             <h3>I'd love to hear from you!</h3>
 
-            <form onSubmit={handleSubmit} action='/thank-you/'>
+            <form
+              onSubmit={handleSubmit}
+              action='/thank-you/'
+              style={{ width: '100%' }}
+            >
               <p>
-                {/* <label> */}
-                {/* Your Name:{' '} */}
-                {/* <input
-                    type='text'
-                    name='name'
-                    value={name}
-                    onChange={handleChange}
-                  /> */}
-                {/* </label> */}
                 <TextField
                   id='outlined-basic'
                   label='Your Name'
@@ -130,15 +129,6 @@ const Contact = () => {
               </p>
 
               <p>
-                {/* <label>
-                  Your Email:{' '}
-                  <input
-                    type='email'
-                    name='email'
-                    value={email}
-                    onChange={handleChange}
-                  />
-                </label> */}
                 <TextField
                   id='outlined-basic'
                   label='Your Email'
@@ -152,14 +142,6 @@ const Contact = () => {
               </p>
 
               <p>
-                {/* <label>
-                  Message:{' '}
-                  <textarea
-                    name='message'
-                    value={message}
-                    onChange={handleChange}
-                  />
-                </label> */}
                 <TextField
                   id='outlined-multiline-static'
                   label='Your Message'
@@ -184,7 +166,6 @@ const Contact = () => {
               </div>
 
               <p>
-                {/* <button type='submit'>Send</button> */}
                 <Button
                   type='submit'
                   variant='outlined'

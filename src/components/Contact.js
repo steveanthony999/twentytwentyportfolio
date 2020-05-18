@@ -145,7 +145,7 @@ const Contact = () => {
                   variant='outlined'
                   type='email'
                   name='email'
-                  value={name}
+                  value={email}
                   onChange={handleChange}
                   fullWidth
                 />

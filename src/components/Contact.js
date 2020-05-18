@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -26,6 +27,13 @@ const Contact = () => {
   const [status, setStatus] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [file, setFile] = useState({});
+
+  const onDrop = useCallback(acceptedFiles => {
+    console.log(acceptedFiles);
+    setFile(acceptedFiles[0]);
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const props = useSpring({
     padding: 20,
@@ -63,11 +71,11 @@ const Contact = () => {
   };
 
   const handleSubmit = e => {
-    const data = { 'form-name': 'contact', name, email, message };
+    const data = { 'form-name': 'contact', name, email, message, file };
 
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'multipart/form-data; boundary=random' },
+      //   headers: { 'Content-Type': 'multipart/form-data; boundary=random' },
       body: encode(data)
     })
       .then(() => setStatus('Form Submission Successful!!'))
@@ -132,6 +140,15 @@ const Contact = () => {
                   />
                 </label>
               </p>
+
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {isDragActive ? (
+                  <p>Drop the files here ...</p>
+                ) : (
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+                )}
+              </div>
 
               <p>
                 <button type='submit'>Send</button>
